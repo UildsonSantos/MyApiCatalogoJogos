@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace USSApiCatalogoJogos.Controllers.V1
 {
-    [Route("api/V1/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class CicloDeVidaIDController : ControllerBase
     {
