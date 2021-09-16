@@ -7,7 +7,7 @@ using USSApiCatalogoJogos.ViewModel;
 
 namespace USSApiCatalogoJogos.Services
 {
-    public interface IJogoService
+    public interface IJogoService : IDisposable
     {
         Task<List<JogoViewModel>> Obter(int pagina, int quantidade);
         Task<JogoViewModel> Obter(Guid id);
