@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using USSApiCatalogoJogos.Exceptions;
 using USSApiCatalogoJogos.InputModel;
 using USSApiCatalogoJogos.Services;
 using USSApiCatalogoJogos.ViewModel;
@@ -54,7 +55,7 @@ namespace USSApiCatalogoJogos.Controllers.V1
 
                 return Ok(jogo);
             }
-            catch (Exception ex)
+            catch (JogoJaCadastradoException ex)
             {
                 return UnprocessableEntity("Já existe um jogo com este nome para esta produtora");
             }
@@ -70,7 +71,7 @@ namespace USSApiCatalogoJogos.Controllers.V1
 
                 return Ok();
             }
-            catch (Exception ex)
+            catch (JogoNaoCadastradoException ex)
             {
                 return NotFound("Não existe este jogo");
             }
@@ -86,7 +87,7 @@ namespace USSApiCatalogoJogos.Controllers.V1
 
                 return Ok();
             }
-            catch (Exception ex)
+            catch (JogoNaoCadastradoException ex)
             {
                 return NotFound("Não existe este jogo");
             }
@@ -102,7 +103,7 @@ namespace USSApiCatalogoJogos.Controllers.V1
 
                 return Ok();
             }
-            catch (Exception ex)
+            catch (JogoNaoCadastradoException ex)
             {
                 return NotFound("Não existe este jogo");
             }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using USSApiCatalogoJogos.Entities;
+using USSApiCatalogoJogos.Exceptions;
 using USSApiCatalogoJogos.InputModel;
 using USSApiCatalogoJogos.Repositories;
 using USSApiCatalogoJogos.ViewModel;
@@ -52,7 +53,7 @@ namespace USSApiCatalogoJogos.Services
             var entidadeJogo = await _jogoRepository.Obter(jogo.Nome, jogo.Produtora);
 
             if (entidadeJogo.Count > 0)
-                throw new Exception();
+                throw new JogoJaCadastradoException();
 
             var jogoInsert = new Jogo
             {
@@ -78,7 +79,7 @@ namespace USSApiCatalogoJogos.Services
             var entidadeJogo = await _jogoRepository.Obter(id);
 
             if (entidadeJogo == null)
-                throw new Exception();
+                throw new JogoNaoCadastradoException();
 
             entidadeJogo.Nome = jogo.Nome;
             entidadeJogo.Produtora = jogo.Produtora;
@@ -92,7 +93,7 @@ namespace USSApiCatalogoJogos.Services
             var entidadeJogo = await _jogoRepository.Obter(id);
 
             if (entidadeJogo == null)
-                throw new Exception();
+                throw new JogoNaoCadastradoException();
 
             entidadeJogo.Preco = preco;
 
@@ -104,7 +105,7 @@ namespace USSApiCatalogoJogos.Services
             var jogo = await _jogoRepository.Obter(id);
 
             if (jogo == null)
-                throw new Exception();
+                throw new JogoNaoCadastradoException();
 
             await _jogoRepository.Remover(id);
         }
