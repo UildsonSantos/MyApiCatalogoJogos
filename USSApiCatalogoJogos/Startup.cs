@@ -14,6 +14,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using USSApiCatalogoJogos.Controllers.V1;
+using USSApiCatalogoJogos.Middleware;
 using USSApiCatalogoJogos.Repositories;
 using USSApiCatalogoJogos.Services;
 
@@ -62,6 +63,8 @@ namespace USSApiCatalogoJogos
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "USSApiCatalogoJogos v1"));
             }
+
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 
